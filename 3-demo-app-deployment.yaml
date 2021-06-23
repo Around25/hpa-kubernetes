@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hpa-demo-deployment
+  labels:
+    app: hpa-demo-deploy
+spec:
+  replicas: 1
+  strategy: 
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: hpa-demo-pod
+  template:
+    metadata:
+      labels:
+        app: hpa-demo-pod
+    spec:
+      containers:
+       - name: hpa-demo-container
+         image: HPA-demo-app:latest
+         imagePullPolicy: IfNotPresent
+
+         resources:
+           requests:
+             cpu: 500m
+
+      terminationGracePeriodSeconds: 0

@@ -1,0 +1,31 @@
+Make sure you have created Dockerfile by using the content in "1-Dockerfile.txt" file attached.
+
+To build the docker image:
+==========================
+$ docker build -t HPA-demo-app .
+
+Here, HPA-demo-app is the name of the docker image.
+
+
+Tag the docker image:
+====================
+$ docker tag php:5-apache karthikeyan819/k8s-container-images:HPA-demo-app
+
+Here,
+karthikeyan819/k8s-container-images - is the name of the public repoistory in DOCKERHUB
+
+
+Upload the image to DOCKERHUB:
+============================
+$ docker push karthikeyan819/k8s-container-images:HPA-demo-app
+
+
+To pull image from DockerHub to local:
+======================================
+$ docker pull karthikeyan819/k8s-container-images:HPA-demo-app
+
+
+List the docker images from local:
+=================================
+$ docker images
+
